@@ -5,9 +5,14 @@ const assert = test.assertTest;
 const assertArray = test.assertTestOnArray;
 const getReport = test.generateAssertionReport;
 
-assert("demoFn", 1, 1, "dummy passing test");
-assert("demoFn", 1, 2, "dummy failing test");
-
-assert("vendingMachine", vendingMachine.test(), 0, "should pass if vending machine is linke");
+assert("oneRupeeCoinsToDispense", 
+  vendingMachine.oneRupeeCoinsToDispense(0), 0, 
+  "amount 0 shoud give 0 coins");
+assert("oneRupeeCoinsToDispense", 
+  vendingMachine.oneRupeeCoinsToDispense(1), 1, 
+  "amount 1 shoud give 1 coin");
+assert("oneRupeeCoinsToDispense", 
+  vendingMachine.oneRupeeCoinsToDispense(45), 45, 
+  "amount 45 shoud give 45 coins");
 
 console.log(getReport());
