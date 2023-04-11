@@ -3,13 +3,12 @@ const determineNoOfCoinsToDispenseOf = function(amount, denomination) {
     extra : amount % denomination};
 }
 
-const denominations = [10, 5, 2, 1];
-
-const determineNoOfCoinsToDispense = function(amount) {
+const determineNoOfCoinsToDispense = function(amount, denominations) {
   let totalNoOfCoins = 0;
   let remaining = amount;
+  reversedDenominations = denominations.concat().reverse();
 
-  for (denomination of denominations) {
+  for (denomination of reversedDenominations) {
     totalNoOfCoins += determineNoOfCoinsToDispenseOf(remaining, denomination).coins;
     remaining = determineNoOfCoinsToDispenseOf(remaining, denomination).extra;
   }
