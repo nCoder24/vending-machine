@@ -1,5 +1,5 @@
-const oneRupeeCoinsToDispense = function(amount) {
-  return amount;
+const determineNoOfCoinsToDispense = function(amount) {
+  return Math.floor(amount / 2) + (amount % 2)
 }
 
-exports.oneRupeeCoinsToDispense = oneRupeeCoinsToDispense;
+exports.determineNoOfCoinsToDispense = determineNoOfCoinsToDispense;
