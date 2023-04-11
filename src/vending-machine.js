@@ -3,16 +3,25 @@ const determineNoOfCoinsToDispenseOf = function(amount, denomination) {
     extra : amount % denomination};
 }
 
-const determineNoOfCoinsToDispense = function(amount) {
-  const tenRupeeCoins = determineNoOfCoinsToDispenseOf(amount, 10).coins;
-  let remaining = determineNoOfCoinsToDispenseOf(amount, 10).extra;
-  const fiveRupeeCoins = determineNoOfCoinsToDispenseOf(remaining, 5).coins;
-  remaining = determineNoOfCoinsToDispenseOf(remaining, 5).extra;
-  const twoRupeeCoins = determineNoOfCoinsToDispenseOf(remaining, 2).coins;
-  remaining = determineNoOfCoinsToDispenseOf(remaining, 2).extra;
-  const oneRupeeCoins = determineNoOfCoinsToDispenseOf(remaining, 1).coins;
+const denominations = [10, 5, 2, 1];
 
-  return tenRupeeCoins + fiveRupeeCoins + twoRupeeCoins + oneRupeeCoins;
+const determineNoOfCoinsToDispense = function(amount) {
+  let totalNoOfCoins = 0;
+  let remaining = amount;
+
+  for (denomination of denominations) {
+    totalNoOfCoins += determineNoOfCoinsToDispenseOf(remaining, denomination).coins;
+    remaining = determineNoOfCoinsToDispenseOf(remaining, denomination).extra;
+  }
+  
+  return totalNoOfCoins;
 }
 
 exports.determineNoOfCoinsToDispense = determineNoOfCoinsToDispense;
+
+/*
+TODO:
+  - loop
+  - seperate function for remaining
+  - use object to manage
+*/
