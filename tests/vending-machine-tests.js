@@ -18,6 +18,12 @@ assert("determineNoOfCoinsToDispense",
   vendingMachine.determineNoOfCoinsToDispense(5), 1, 
   "amount 5 shoud give 1 coins (5:1)");
 assert("determineNoOfCoinsToDispense", 
+  vendingMachine.determineNoOfCoinsToDispense(12), 2, 
+  "amount 12 shoud give 2 coins (10:1, 2:1)");
+assert("determineNoOfCoinsToDispense", 
+  vendingMachine.determineNoOfCoinsToDispense(15), 2, 
+  "amount 5 shoud give 2 coins (10:1, 5:1)");
+assert("determineNoOfCoinsToDispense", 
   vendingMachine.determineNoOfCoinsToDispense(7), 2, 
   "amount 5 shoud give 1 coins (5:1, 2:1)");
 
