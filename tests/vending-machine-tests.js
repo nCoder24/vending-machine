@@ -1,9 +1,13 @@
 const test = require("../lib/testing-utilities.js");
 const vendingMachine = require("../src/vending-machine.js");
 
-test.assertTest("demoFn", 1, 1, "dummy passing test");
-test.assertTest("demoFn", 1, 2, "dummy failing test");
+const assert = test.assertTest;
+const assertArray = test.assertTestOnArray;
+const getReport = test.generateAssertionReport;
 
-test.assertTest("vendingMachine", vendingMachine.test(), 0, "should pass if vending machine is linked");
+assert("demoFn", 1, 1, "dummy passing test");
+assert("demoFn", 1, 2, "dummy failing test");
 
-console.log(test.generateAssertionReport());
+assert("vendingMachine", vendingMachine.test(), 0, "should pass if vending machine is linke");
+
+console.log(getReport());
