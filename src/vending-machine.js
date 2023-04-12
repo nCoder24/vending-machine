@@ -1,6 +1,9 @@
 const determineNoOfCoinsToDispenseOf = function(amount, denomination) {
-  return {coins : Math.floor(amount / denomination), 
-    extra : amount % denomination};
+  return Math.floor(amount / denomination);
+}
+
+const removeMaxDenominations = function(amount, denomination) {
+  return amount - (denomination * determineNoOfCoinsToDispenseOf(amount, denomination));
 }
 
 const determineNoOfCoinsToDispense = function(amount, denominations) {
@@ -9,8 +12,8 @@ const determineNoOfCoinsToDispense = function(amount, denominations) {
   reversedDenominations = denominations.concat().reverse();
 
   for (denomination of reversedDenominations) {
-    totalNoOfCoins += determineNoOfCoinsToDispenseOf(remaining, denomination).coins;
-    remaining = determineNoOfCoinsToDispenseOf(remaining, denomination).extra;
+    totalNoOfCoins += determineNoOfCoinsToDispenseOf(remaining, denomination);
+    remaining = removeMaxDenominations(remaining, denomination);
   }
   
   return totalNoOfCoins;
