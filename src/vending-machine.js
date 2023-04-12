@@ -6,24 +6,34 @@ const removeMaxDenominations = function(amount, denomination) {
   return amount - (denomination * determineNoOfCoinsToDispenseOf(amount, denomination));
 }
 
-const determineNoOfCoinsToDispense = function(amount, denominations) {
-  let totalNoOfCoins = 0;
-  let remaining = amount;
-  reversedDenominations = denominations.concat().reverse();
+const addCoins = function(coins) {
+  let total = 0;
 
-  for (denomination of reversedDenominations) {
-    totalNoOfCoins += determineNoOfCoinsToDispenseOf(remaining, denomination);
+  for (denomination in coins) {
+    total += coins[denomination];
+  }
+  
+  return total;
+}
+
+const determineNoOfCoinsToDispense = function(amount, denominations) {
+  const coinsToDispense = {};
+  let remaining = amount;
+  const orderedDenominations = denominations.concat().reverse();
+
+  for (denomination of orderedDenominations) {
+    coinsToDispense[denomination] = determineNoOfCoinsToDispenseOf(remaining, denomination);
     remaining = removeMaxDenominations(remaining, denomination);
   }
   
-  return totalNoOfCoins;
+  return addCoins(coinsToDispense);
 }
 
 exports.determineNoOfCoinsToDispense = determineNoOfCoinsToDispense;
 
 /*
 TODO:
-  - loop
-  - seperate function for remaining
-  - use object to manage
+  - loop [done]
+  - seperate function for remaining [done]
+  - use object to manage [done]
 */
