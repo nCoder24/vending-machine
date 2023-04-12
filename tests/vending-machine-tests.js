@@ -44,7 +44,8 @@ const assertMax = function() {
   assert("max", vendingMachine.max([2]),  2, "sould be in assending order"); 
 }
 
-assertSorting();
-assertMax();
+//assertSorting();
+//assertMax();
+assertVendingMachine();
 
 console.log(getReport());

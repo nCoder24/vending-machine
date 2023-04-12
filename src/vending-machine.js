@@ -40,7 +40,7 @@ const maxSort = function(numbers) {
 const determineNoOfCoinsToDispense = function(amount, denominations) {
   const coinsToDispense = {};
   let remaining = amount;
-  const orderedDenominations = sortInDecendingOrder(denominations);
+  const orderedDenominations = maxSort(denominations);
 
   for (denomination of orderedDenominations) {
     coinsToDispense[denomination] = determineNoOfCoinsToDispenseOf(remaining, denomination);
