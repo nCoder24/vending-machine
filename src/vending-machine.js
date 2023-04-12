@@ -12,7 +12,7 @@ const addCoins = function(coins) {
   for (denomination in coins) {
     total += coins[denomination];
   }
-  
+
   return total;
 }
 
@@ -25,7 +25,7 @@ const determineNoOfCoinsToDispense = function(amount, denominations) {
     coinsToDispense[denomination] = determineNoOfCoinsToDispenseOf(remaining, denomination);
     remaining = removeMaxDenominations(remaining, denomination);
   }
-  
+
   return addCoins(coinsToDispense);
 }
 
@@ -36,4 +36,4 @@ TODO:
   - loop [done]
   - seperate function for remaining [done]
   - use object to manage [done]
-*/
+ */
