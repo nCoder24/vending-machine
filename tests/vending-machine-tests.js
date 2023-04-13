@@ -2,10 +2,10 @@ const test = require("../lib/testing-utilities.js");
 const vendingMachine = require("../src/vending-machine.js");
 
 const assert = test.assertTest;
-const assertArray = test.assertTestOnArray;
+const assertObject = test.assertTestOnObject;
 const getReport = test.generateAssertionReport;
 
-const assertVendingMachine = function() {
+const assertNumberOfCoins = function() {
   assert("determineNoOfCoinsToDispense", 
     vendingMachine.determineNoOfCoinsToDispense(0, [1]), 0, 
     "amount 0 shoud give 0 coins");
@@ -32,5 +32,19 @@ const assertVendingMachine = function() {
     "amount 13 shoud give 4 coins (7:1, 4:1, 1:2)");
 }
 
-assertVendingMachine();
+const assertDetermineDenominationsToDispense = function() {
+  assertObject("determineCoinsToDispense", 
+    vendingMachine.determineCoinsToDispense(15, [5]), {5:3}, 
+    "amount 15 shoud give 3 coins (5:3)");
+  assertObject("determineCoinsToDispense", 
+    vendingMachine.determineCoinsToDispense(13, [7, 4, 1]), {7:1, 4:1, 1:2}, 
+    "amount 13 shoud give 4 coins (7:1, 4:1, 1:2)");
+  assertObject("determineCoinsToDispense", 
+    vendingMachine.determineCoinsToDispense(13, [7, 4, 2]), {7:1, 4:1, 2:1}, 
+    "amount 13 shoud give 4 coins (7:1, 4:1, 2:1)");
+}
+
+assertNumberOfCoins();
+assertDetermineDenominationsToDispense();
+
 console.log(getReport());

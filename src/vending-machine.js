@@ -19,6 +19,10 @@ const addCoins = function(coins) {
 }
 
 const determineNoOfCoinsToDispense = function(amount, denominations) {
+  return addCoins(determineCoinsToDispense(amount, denominations));
+}
+
+const determineCoinsToDispense = function(amount, denominations) {
   const coinsToDispense = {};
   let remaining = amount;
   const orderedDenominations = array.maxSort(denominations);
@@ -28,14 +32,8 @@ const determineNoOfCoinsToDispense = function(amount, denominations) {
     remaining = removeMaxDenominations(remaining, denomination);
   }
 
-  return addCoins(coinsToDispense);
+  return coinsToDispense;
 }
 
 exports.determineNoOfCoinsToDispense = determineNoOfCoinsToDispense;
-
-/*
-TODO:
-  - loop [done]
-  - seperate function for remaining [done]
-  - use object to manage [done]
- */
+exports.determineCoinsToDispense = determineCoinsToDispense;
